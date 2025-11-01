@@ -250,6 +250,14 @@ class LocaltuyaLight(LocalTuyaEntity, LightEntity):
         return None
 
     @property
+    def color_temp_kelvin(self):
+        """Return the color temperature in kelvin."""
+        mired = self.color_temp
+        if mired is not None:
+            return color_util.color_temperature_mired_to_kelvin(mired)
+        return None
+
+    @property
     def min_mireds(self):
         """Return color temperature min mireds."""
         return self._min_mired
